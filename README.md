@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/basebin/mlapi/main/.github/assets/thumbnail.png" alt="mlapi" width="100%">
+</p>
+
 # mlapi
 
 FastAPI service for machine learning inference.
