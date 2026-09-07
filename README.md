@@ -6,9 +6,20 @@
 
 FastAPI service for machine learning inference.
 
+Serves a fine-tuned GPT-2 causal model (`./fine_tuned_model`) with CORS enabled, logging, and config in `config.yaml`. Consumed by thread.
+
+## Run
+
+```bash
+pip install -r requirements.txt
+python main.py
+```
+
+Docker (`Dockerfile`) and Kubernetes (`k8s.yaml`) manifests included. Responses generated via `generate_response.py`; server entry in `api_server.py`.
+
 ## Stack
 
-Consumed by vortai and thread.
+FastAPI, Transformers, PyTorch.
 
 ## License
 
