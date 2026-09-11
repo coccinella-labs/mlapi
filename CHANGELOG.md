@@ -2,6 +2,22 @@
 
 <!-- version list -->
 
+## v1.1.3 (2026-09-11)
+
+### Bug Fixes
+
+- Replace stale harpertoken org refs with coccinella-labs
+  ([`d47fb1e`](https://github.com/coccinella-labs/mlapi/commit/d47fb1e37fb84a1ddf24b62e5e12b64561f3936f))
+
+- Replace stale harpertoken org refs with coccinella-labs
+  ([`d5bab44`](https://github.com/coccinella-labs/mlapi/commit/d5bab447bcf5536fe679397859038d8464387a81))
+
+### Documentation
+
+- Quiet readme
+  ([`b300449`](https://github.com/coccinella-labs/mlapi/commit/b30044969d69ff63df06e1c1daf5048d2d3c53ca))
+
+
 ## v1.1.2 (2025-12-14)
 
 ### Bug Fixes
