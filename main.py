@@ -20,13 +20,16 @@ try:
     if os.path.exists(MODEL_PATH):
         tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, local_files_only=True)
         model = AutoModelForCausalLM.from_pretrained(MODEL_PATH, local_files_only=True)
+        MODEL_SOURCE = MODEL_PATH
     else:
         tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
         model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
+        MODEL_SOURCE = MODEL_NAME
 except Exception as e:
     logger.warning(f"Failed to load local model: {str(e)}, loading from remote")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
     model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
+    MODEL_SOURCE = MODEL_NAME
 
 app = FastAPI()
 
@@ -90,9 +93,13 @@ async def get_models():
     return {
         "models": [
             {
-                "name": "harpertokenConvAI",
+                "name": MODEL_SOURCE,
                 "type": "causal_lm",
-                "description": "Conversational AI model for text generation",
+                "description": (
+                    f"Autoregressive causal LM loaded from {MODEL_SOURCE}. "
+                    "Produces text continuations rather than dialogue; it has no "
+                    "instruction tuning and no chat template."
+                ),
             }
         ]
     }
@@ -103,8 +110,8 @@ async def get_status():
     """Get API and model status."""
     return {
         "status": "running",
-        "model_loaded": True,
-        "model_name": "harpertokenConvAI",
+        "model_loaded": model is not None,
+        "model_name": MODEL_SOURCE,
     }
 
 
