@@ -42,7 +42,7 @@ The model is a plain causal LM. It produces text continuations rather than dialo
 
 Two files exist that are not part of the running service:
 
-- `api_server.py` defines a `/chat` endpoint that loads a different model (`bniladridas/conversational-ai-fine-tuned`) and does not enable CORS or logging. It is not referenced by the Dockerfile, CI or tests.
+- `api_server.py` defines a `/chat` endpoint that loads a different model and does not enable CORS or logging. It is not referenced by the Dockerfile, CI or tests. It points at `bniladridas/conversational-ai-fine-tuned`, which Hugging Face now redirects to `harpertoken/chat` (a GPT-2 dialogue model, MIT licensed). The old name still resolves, so the file works, but it is loading a renamed model through a deprecated alias.
 - `generate_response.py` is a standalone CLI script. Nothing imports it.
 
 The entry point is `main.py`, which is what the Dockerfile runs and what `tests/test_main.py` exercises.
